@@ -34,5 +34,6 @@ dependencies {
     implementation(projects.core)
     implementation(projects.designSystem)
     implementation(projects.domain)
+    implementation(projects.feature.featureCore)
 
 }

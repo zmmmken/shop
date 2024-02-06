@@ -68,4 +68,5 @@ dependencies {
     implementation(projects.data)
     implementation(projects.domain)
     implementation(projects.feature.product)
+    implementation(projects.feature.featureCore)
 }
