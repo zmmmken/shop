@@ -1,4 +1,4 @@
-package com.kenevisi.designsystem
+package com.kenevisi.feature_core
 
 import org.junit.Test
 
