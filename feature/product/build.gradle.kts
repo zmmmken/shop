@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.common.android.plugin)
     alias(libs.plugins.common.hilt.plugin)
-    id("androidx.navigation.safeargs.kotlin")
+    id(libs.plugins.navigation.safeArgs.get().pluginId)
 }
 
 android {
