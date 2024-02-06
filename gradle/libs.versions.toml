@@ -48,5 +48,6 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
 #CustomPlugins
 common-android-plugin = { id = "kenevisi.torob.commonAndroidConfigPlugin", version = "unspecified" }
+common-hilt-plugin = { id = "kenevisi.torob.androidHiltConventionPlugin", version = "unspecified" }
 
 
