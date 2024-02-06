@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.common.android.plugin)
     alias(libs.plugins.common.hilt.plugin)
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -22,6 +23,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    //Navigation
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
 
 
 

@@ -16,6 +16,8 @@ legacy-support-v4 = "1.0.0"
 lifecycle-livedata-ktx = "2.7.0"
 lifecycle-viewmodel-ktx = "2.7.0"
 fragment-version = "1.6.2"
+nav-version = "2.7.6"
+
 
 
 
@@ -43,6 +45,12 @@ hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 
+#navigation
+navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "nav-version" }
+navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "nav-version" }
+navigation-safeargs = { group = "androidx.navigation", name = "navigation-safe-args-gradle-plugin", version.ref = "nav-version" }
+
+
 
 
 [plugins]
@@ -52,6 +60,8 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+navigation-safeArgs = { id = "androidx.navigation.safeargs.kotlin" ,version ="unspecified" }
+
 
 
 
