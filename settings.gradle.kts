@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "Torob Enterance"
 include(":app")
 include(":data")
+include(":domain")
