@@ -13,7 +13,9 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Torob Enterance"
+rootProject.name = "TorobEnterance"
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 include(":app")
 include(":data")
 include(":domain")
