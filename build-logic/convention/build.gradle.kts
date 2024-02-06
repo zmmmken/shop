@@ -34,6 +34,12 @@ gradlePlugin {
             implementationClass = "AndroidConfigPlugin"
         }
     }
+    plugins {
+        register("AndroidHiltConventionPlugin") {
+            id = "kenevisi.torob.androidHiltConventionPlugin"
+            implementationClass = "AndroidHiltConventionPlugin"
+        }
+    }
 }
 
 
