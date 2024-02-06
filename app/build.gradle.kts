@@ -64,7 +64,6 @@ dependencies {
 
     //project
     implementation(projects.core)
-    implementation(projects.designSystem)
     implementation(projects.data)
     implementation(projects.domain)
     implementation(projects.feature.product)
