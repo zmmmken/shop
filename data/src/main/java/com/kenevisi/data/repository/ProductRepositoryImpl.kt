@@ -20,7 +20,7 @@ class ProductRepositoryImpl @Inject constructor(
         return dataSource.getProduct(productKey = productKey).toProductEntity()
     }
 
-    override suspend fun getSimilarProducts(productKey: String): Flow<PagingData<ProductEntity>> {
+    override fun getSimilarProducts(productKey: String): Flow<PagingData<ProductEntity>> {
         return Pager(
             config = PagingConfig(
                 pageSize = PAGE_SIZE
