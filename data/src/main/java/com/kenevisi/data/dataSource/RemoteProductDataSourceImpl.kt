@@ -7,7 +7,7 @@ import javax.inject.Inject
 class RemoteProductDataSourceImpl @Inject constructor(
     private val remoteService: ProductApiRemoteService
 ) : RemoteProduceDataSource {
-    override suspend fun getProduct(productId:String): ProductResponse {
-        return remoteService.getProduct(productId).body()!!
+    override suspend fun getProduct(productKey:String): ProductResponse {
+        return remoteService.getProduct(productKey).body()!!
     }
 }

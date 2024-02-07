@@ -10,7 +10,7 @@ class ProductRepositoryImpl @Inject constructor(
     private val dataSource: RemoteProduceDataSource
 ) : ProductRepository {
     override suspend fun getProductInfo(productKey: String): ProductEntity {
-        return dataSource.getProduct(productId = productKey).toProductEntity()
+        return dataSource.getProduct(productKey = productKey).toProductEntity()
     }
 
     override suspend fun getSimilarProducts(productKey: String): List<ProductEntity> {
