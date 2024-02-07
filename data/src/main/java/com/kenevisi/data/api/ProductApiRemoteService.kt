@@ -8,12 +8,12 @@ import retrofit2.http.Query
 
 interface ProductApiRemoteService {
     @GET("/base-product/details/")
-    fun getProduct(
+    suspend fun getProduct(
         @Query("prk") productId: String
     ): Response<ProductResponse>
 
     @GET("/base-product/similar-base-product/")
-    fun getSimilarProducts(
+    suspend fun getSimilarProducts(
         @Query("prk") productId: String,
         @Query("page") page: Int,
         @Query("size") size: Int
