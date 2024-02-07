@@ -40,6 +40,12 @@ gradlePlugin {
             implementationClass = "AndroidHiltConventionPlugin"
         }
     }
+    plugins {
+        register("TorobKotlinSerializationPlugin") {
+            id = "kenevisi.torob.torobKotlinSerializationPlugin"
+            implementationClass = "TorobKotlinSerializationPlugin"
+        }
+    }
 }
 
 

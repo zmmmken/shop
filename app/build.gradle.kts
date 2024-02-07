@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.common.hilt.plugin)
+    alias(libs.plugins.common.serialization.plugin)
 }
 
 android {
@@ -60,6 +61,13 @@ dependencies {
     //Navigation
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+
+    //retrofit
+    implementation(libs.retrofit)
+    implementation(libs.okHttp.logger)
+
+    //paging
+    implementation(libs.paging)
 
 
     //project

@@ -1,13 +1,17 @@
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.common.android.plugin)
     alias(libs.plugins.common.hilt.plugin)
+    alias(libs.plugins.common.serialization.plugin)
 }
 
 android {
     namespace = "com.kenevisi.data"
+    defaultConfig {
+        buildConfigField("String", "BASE_URL", "\"https://api.torob.com/\"")
+    }
+
 }
 
 dependencies {
@@ -23,4 +27,11 @@ dependencies {
     //project
     implementation(projects.core)
     implementation(projects.domain)
+
+    //retrofit
+    implementation(libs.retrofit)
+    implementation(libs.okHttp.logger)
+
+    //paging
+    implementation(libs.paging)
 }

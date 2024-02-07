@@ -10,7 +10,8 @@ plugins {
 }
 buildscript {
     dependencies {
-        classpath(libs.navigation.safeargs)
+        classpath(libs.classPath.navigation.safeargs)
+        classpath(libs.classPath.serializable)
     }
 }
 
