@@ -17,12 +17,14 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 class DataModule {
 
     @Provides
+    @Singleton
     fun provideLoggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
         level = if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor.Level.BODY
@@ -32,6 +34,7 @@ class DataModule {
     }
 
     @Provides
+    @Singleton
     fun provideOkHttp(
         httpLoggingInterceptor: HttpLoggingInterceptor
     ): OkHttpClient {
@@ -51,8 +54,9 @@ class DataModule {
     }
 
 
-    @OptIn(ExperimentalSerializationApi::class)
     @Provides
+    @Singleton
+    @OptIn(ExperimentalSerializationApi::class)
     fun provideJson() = Json {
         encodeDefaults = true
         ignoreUnknownKeys = true
@@ -60,11 +64,13 @@ class DataModule {
     }
 
     @Provides
+    @Singleton
     fun provideConverter(json: Json): Converter.Factory =
         json.asConverterFactory("application/json".toMediaType())
 
 
     @Provides
+    @Singleton
     fun provideRetrofit(httpClient: OkHttpClient, converter: Converter.Factory): Retrofit =
         Retrofit.Builder()
             .client(httpClient)
