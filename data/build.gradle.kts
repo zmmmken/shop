@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.common.android.plugin)
     alias(libs.plugins.common.hilt.plugin)
+    alias(libs.plugins.common.serialization.plugin)
 }
 
 android {
