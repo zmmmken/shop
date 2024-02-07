@@ -9,6 +9,10 @@ plugins {
 
 android {
     namespace = "com.kenevisi.data"
+    defaultConfig {
+        buildConfigField("String", "BASE_URL", "\"http://api.torob.com/v4/\"")
+    }
+
 }
 
 dependencies {
@@ -24,4 +28,8 @@ dependencies {
     //project
     implementation(projects.core)
     implementation(projects.domain)
+
+    //retrofit
+    implementation(libs.retrofit)
+    implementation(libs.okHttp.logger)
 }

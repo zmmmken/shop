@@ -62,6 +62,10 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
 
+    //retrofit
+    implementation(libs.retrofit)
+    implementation(libs.okHttp.logger)
+
 
     //project
     implementation(projects.core)

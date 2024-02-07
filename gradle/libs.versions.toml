@@ -18,6 +18,9 @@ lifecycle-viewmodel-ktx = "2.7.0"
 fragment-version = "1.6.2"
 nav-version = "2.7.6"
 kotlin-serializable = "1.6.0"
+kotlin-serializable-convertor = "1.0.0"
+retrofit-version = "2.9.0"
+okHttp-version = "5.0.0-alpha.11"
 
 
 
@@ -53,7 +56,12 @@ classPath-navigation-safeargs = { group = "androidx.navigation", name = "navigat
 
 #kotlinSerializable
 kotlin-serializable-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlin-serializable" }
+kotlin-serializable-convertor = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "kotlin-serializable-convertor" }
 classPath-serializable = { group = "org.jetbrains.kotlin", name = "kotlin-serialization", version.ref = "kotlin" }
+
+#retrofit
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit-version" }
+okHttp-logger = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttp-version" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

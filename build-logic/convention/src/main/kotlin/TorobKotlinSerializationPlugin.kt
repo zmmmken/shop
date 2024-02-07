@@ -10,6 +10,7 @@ class TorobKotlinSerializationPlugin : Plugin<Project> {
 
             dependencies {
                 "implementation"(libs().findLibrary("kotlin.serializable.json").get())
+                "implementation"(libs().findLibrary("kotlin.serializable.convertor").get())
             }
         }
     }
