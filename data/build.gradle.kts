@@ -10,7 +10,7 @@ plugins {
 android {
     namespace = "com.kenevisi.data"
     defaultConfig {
-        buildConfigField("String", "BASE_URL", "\"http://api.torob.com/v4/\"")
+        buildConfigField("String", "BASE_URL", "\"https://api.torob.com/\"")
     }
 
 }
