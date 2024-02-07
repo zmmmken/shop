@@ -66,6 +66,9 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.okHttp.logger)
 
+    //paging
+    implementation(libs.paging)
+
 
     //project
     implementation(projects.core)

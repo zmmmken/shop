@@ -1,4 +1,3 @@
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
@@ -32,4 +31,7 @@ dependencies {
     //retrofit
     implementation(libs.retrofit)
     implementation(libs.okHttp.logger)
+
+    //paging
+    implementation(libs.paging)
 }

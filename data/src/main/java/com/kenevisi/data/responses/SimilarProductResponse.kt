@@ -5,5 +5,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class SimilarProductResponse(
-    @SerialName("results") val results: List<ProductResponse>
+    @SerialName("results") val results: List<ProductResponse>?,
+    val next: String?
 )

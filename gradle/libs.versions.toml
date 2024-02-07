@@ -21,6 +21,7 @@ kotlin-serializable = "1.6.0"
 kotlin-serializable-convertor = "1.0.0"
 retrofit-version = "2.9.0"
 okHttp-version = "5.0.0-alpha.11"
+paging-version="3.2.1"
 
 
 
@@ -62,6 +63,10 @@ classPath-serializable = { group = "org.jetbrains.kotlin", name = "kotlin-serial
 #retrofit
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit-version" }
 okHttp-logger = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttp-version" }
+
+#Paging
+paging= {group= "androidx.paging", name="paging-runtime", version.ref="paging-version"}
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

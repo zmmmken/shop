@@ -1,6 +1,6 @@
 package com.kenevisi.data.di
 
-import com.kenevisi.data.dataSource.RemoteProduceDataSource
+import com.kenevisi.data.dataSource.RemoteProductDataSource
 import com.kenevisi.data.dataSource.RemoteProductDataSourceImpl
 import dagger.Binds
 import dagger.Module
@@ -17,5 +17,5 @@ abstract class DataSourceModule {
     @Singleton
     abstract fun bindProductRemoteDataSource(
         dataSource: RemoteProductDataSourceImpl
-    ): RemoteProduceDataSource
+    ): RemoteProductDataSource
 }

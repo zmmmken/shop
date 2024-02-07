@@ -28,6 +28,8 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
 
+    //paging
+    implementation(libs.paging)
 
 
     //project layers
