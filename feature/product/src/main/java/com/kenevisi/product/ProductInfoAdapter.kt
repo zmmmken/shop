@@ -5,9 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.kenevisi.domain.contract.ProductEntity
+import com.kenevisi.feature_core.viewModelHelper.ImageLoader
 import com.kenevisi.product.databinding.ItemProductViewHolderBinding
 
-class ProductInfoAdapter : ListAdapter<ProductEntity, ProductViewHolder>(diffUtil) {
+class ProductInfoAdapter(
+    private val imageLoader: ImageLoader
+) : ListAdapter<ProductEntity, ProductViewHolder>(diffUtil) {
 
 
     companion object {
@@ -31,7 +34,8 @@ class ProductInfoAdapter : ListAdapter<ProductEntity, ProductViewHolder>(diffUti
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),
+            imageLoader = imageLoader
         )
     }
 

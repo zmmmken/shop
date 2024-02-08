@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import com.kenevisi.feature_core.viewModelHelper.ImageLoader
 import com.kenevisi.product.databinding.ImageViewHolderBinding
 
-class ImageAdapter : ListAdapter<String, ImageViewHolder>(diffUtil) {
+class ImageAdapter(private val imageLoader: ImageLoader) :
+    ListAdapter<String, ImageViewHolder>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
         return ImageViewHolder(
@@ -14,7 +16,8 @@ class ImageAdapter : ListAdapter<String, ImageViewHolder>(diffUtil) {
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),
+            imageLoader = imageLoader
         )
     }
 

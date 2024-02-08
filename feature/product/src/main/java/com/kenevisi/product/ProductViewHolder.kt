@@ -3,13 +3,15 @@ package com.kenevisi.product
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kenevisi.domain.contract.ProductEntity
+import com.kenevisi.feature_core.viewModelHelper.ImageLoader
 import com.kenevisi.product.databinding.ItemProductViewHolderBinding
 
 class ProductViewHolder(
-    private val binding: ItemProductViewHolderBinding
+    private val binding: ItemProductViewHolderBinding,
+    private val imageLoader: ImageLoader
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    private var imageAdapter: ImageAdapter = ImageAdapter()
+    private var imageAdapter: ImageAdapter = ImageAdapter(imageLoader)
     fun bind(productEntity: ProductEntity) {
         binding.txtLatinNameName.text = productEntity.getPersianName()
         binding.txtPersianName.text = productEntity.getLatinName()

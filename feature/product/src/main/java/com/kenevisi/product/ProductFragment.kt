@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kenevisi.core.exceptions.ResourceState
 import com.kenevisi.domain.contract.ProductEntity
+import com.kenevisi.feature_core.viewModelHelper.ImageLoader
 import com.kenevisi.feature_core.viewModelHelper.collectOnEachStart
 import com.kenevisi.product.databinding.FragmentProductBinding
 import com.kenevisi.product.similarProducts.SimilarProductAdapter
@@ -21,6 +22,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProductFragment : Fragment() {
@@ -33,9 +35,12 @@ class ProductFragment : Fragment() {
     private var similarProductAdapter: SimilarProductAdapter? = null
     private var productAdapter: ProductInfoAdapter? = null
 
+    @Inject
+    lateinit var imageLoader: ImageLoader
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        similarProductAdapter = SimilarProductAdapter()
-        productAdapter = ProductInfoAdapter()
+        similarProductAdapter = SimilarProductAdapter(imageLoader)
+        productAdapter = ProductInfoAdapter(imageLoader)
         super.onCreate(savedInstanceState)
     }
 

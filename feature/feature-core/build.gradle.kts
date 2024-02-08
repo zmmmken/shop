@@ -19,4 +19,6 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.fragment)
+    implementation(libs.glide.core)
+    annotationProcessor(libs.glide.compiler)
 }

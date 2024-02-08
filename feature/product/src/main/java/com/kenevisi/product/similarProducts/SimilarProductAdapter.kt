@@ -6,9 +6,12 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.kenevisi.domain.contract.ProductEntity
+import com.kenevisi.feature_core.viewModelHelper.ImageLoader
 import com.kenevisi.product.databinding.ItemSimilarProductViewholderBinding
 
-class SimilarProductAdapter : PagingDataAdapter<ProductEntity, SimilarProductViewHolder>(diffUtil) {
+class SimilarProductAdapter(
+    private val imageLoader: ImageLoader
+) : PagingDataAdapter<ProductEntity, SimilarProductViewHolder>(diffUtil) {
 
     override fun onBindViewHolder(holder: SimilarProductViewHolder, position: Int) {
         Log.d("TAG1234", "onBindViewHolder: ${getItem(position)?.getProductKey()}")
