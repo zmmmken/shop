@@ -16,6 +16,8 @@ data class ProductEntity(
 
     fun getImages() = images.orEmpty()
 
+    fun getPosterImager() = posterImage
+
     companion object {
         fun empty() = ProductEntity(
             persianName = null,

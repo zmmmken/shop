@@ -24,7 +24,8 @@ class SimilarProductAdapter(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),
+            imageLoader = imageLoader
         )
     }
 
