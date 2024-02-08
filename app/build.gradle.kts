@@ -76,4 +76,8 @@ dependencies {
     implementation(projects.domain)
     implementation(projects.feature.product)
     implementation(projects.feature.featureCore)
+
+    //glide
+    implementation(libs.glide.core)
+    annotationProcessor(libs.glide.compiler)
 }

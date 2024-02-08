@@ -1,5 +1,6 @@
 package com.kenevisi.data.repository
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.kenevisi.data.dataSource.RemoteProductDataSource
@@ -27,7 +28,7 @@ class SimilarProductPagingSource(
                 prevKey = if (currentKey != 0) currentKey.minus(1) else null,
                 nextKey = if (response.next != null) currentKey.plus(1) else null
             )
-        } catch (e : Exception){
+        } catch (e: Exception) {
             LoadResult.Error(
                 throwable = e
             )

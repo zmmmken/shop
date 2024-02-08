@@ -1,4 +1,10 @@
 package com.kenevisi.product.presentation
 
-class ProductUiState {
-}
+import androidx.paging.PagingData
+import com.kenevisi.core.exceptions.ResourceState
+import com.kenevisi.domain.contract.ProductEntity
+
+data class ProductUiState(
+    val product: ResourceState<ProductEntity> = ResourceState.None,
+    val similarProducts: PagingData<ProductEntity> = PagingData.empty(),
+)

@@ -4,6 +4,7 @@ sealed class ResourceState<out T> {
     data class Success<T>(val data: T) : ResourceState<T>()
     data class Failure(val exception: Exception) : ResourceState<Nothing>()
     data object Loading : ResourceState<Nothing>()
+    data object None : ResourceState<Nothing>()
 
     fun getResult(): T? {
         return (this as? Success)?.data

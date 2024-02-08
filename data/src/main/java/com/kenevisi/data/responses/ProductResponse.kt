@@ -11,7 +11,8 @@ data class ProductResponse(
     @SerialName("price") val price: Long?,
     @SerialName("price_text") val priceText: String?,
     @SerialName("random_key") val productKey: String?,
-    @SerialName("image_urls") val images: List<ImagesResponse>?
+    @SerialName("image_urls") val images: List<ImagesResponse>?,
+    @SerialName("shop_text") val shopText: String?
 )
 
 @Serializable

@@ -21,7 +21,8 @@ kotlin-serializable = "1.6.0"
 kotlin-serializable-convertor = "1.0.0"
 retrofit-version = "2.9.0"
 okHttp-version = "5.0.0-alpha.11"
-paging-version="3.2.1"
+paging-version = "3.2.1"
+glide-version = "4.16.0"
 
 
 
@@ -65,8 +66,10 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 okHttp-logger = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttp-version" }
 
 #Paging
-paging= {group= "androidx.paging", name="paging-runtime", version.ref="paging-version"}
+paging = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging-version" }
 
+glide-core = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide-version" }
+glide-compiler = { group = "com.github.bumptech.glide", name = "ksp", version.ref = "glide-version" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
