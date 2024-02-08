@@ -23,7 +23,8 @@ class ProductRepositoryImpl @Inject constructor(
     override fun getSimilarProducts(productKey: String): Flow<PagingData<ProductEntity>> {
         return Pager(
             config = PagingConfig(
-                pageSize = PAGE_SIZE
+                pageSize = PAGE_SIZE,
+                initialLoadSize = PAGE_SIZE
             ),
             pagingSourceFactory = {
                 SimilarProductPagingSource(

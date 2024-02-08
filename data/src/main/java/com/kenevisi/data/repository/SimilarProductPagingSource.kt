@@ -1,5 +1,6 @@
 package com.kenevisi.data.repository
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.kenevisi.data.dataSource.RemoteProductDataSource
@@ -21,13 +22,15 @@ class SimilarProductPagingSource(
                 size = params.loadSize,
                 page = currentKey
             )
+            Log.d("TAG1234", "data: ${response.results}")
 
             LoadResult.Page(
                 data = response.results.orEmpty(),
                 prevKey = if (currentKey != 0) currentKey.minus(1) else null,
                 nextKey = if (response.next != null) currentKey.plus(1) else null
             )
-        } catch (e : Exception){
+        } catch (e: Exception) {
+            Log.e("TAG1234", "error: $e")
             LoadResult.Error(
                 throwable = e
             )

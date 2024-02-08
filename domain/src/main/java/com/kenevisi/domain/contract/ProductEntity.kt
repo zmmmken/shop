@@ -8,4 +8,6 @@ data class ProductEntity(
     private val priceText: String?,
     private val productKey: String?,
     private val images: List<String>?
-)
+) {
+    fun getProductKey() = productKey.orEmpty()
+}
