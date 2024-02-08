@@ -22,7 +22,6 @@ class SimilarProductPagingSource(
                 size = params.loadSize,
                 page = currentKey
             )
-            Log.d("TAG1234", "data: ${response.results}")
 
             LoadResult.Page(
                 data = response.results.orEmpty(),
@@ -30,7 +29,6 @@ class SimilarProductPagingSource(
                 nextKey = if (response.next != null) currentKey.plus(1) else null
             )
         } catch (e: Exception) {
-            Log.e("TAG1234", "error: $e")
             LoadResult.Error(
                 throwable = e
             )

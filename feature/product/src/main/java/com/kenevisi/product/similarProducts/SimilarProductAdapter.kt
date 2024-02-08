@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.DiffUtil
 import com.kenevisi.domain.contract.ProductEntity
 import com.kenevisi.feature_core.viewModelHelper.ImageLoader
 import com.kenevisi.product.databinding.ItemSimilarProductViewholderBinding
+import com.kenevisi.product.presentation.SimilarProductAction
 
 class SimilarProductAdapter(
-    private val imageLoader: ImageLoader
+    private val imageLoader: ImageLoader,
+    private val action: SimilarProductAction
 ) : PagingDataAdapter<ProductEntity, SimilarProductViewHolder>(diffUtil) {
 
     override fun onBindViewHolder(holder: SimilarProductViewHolder, position: Int) {
@@ -25,7 +27,8 @@ class SimilarProductAdapter(
                 parent,
                 false
             ),
-            imageLoader = imageLoader
+            imageLoader = imageLoader,
+            action = action
         )
     }
 

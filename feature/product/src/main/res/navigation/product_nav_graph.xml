@@ -6,9 +6,16 @@
 
     <fragment
         android:id="@+id/fragment_product"
-        android:name="com.kenevisi.product.ProductFragment" >
+        android:name="com.kenevisi.product.ProductFragment">
 
-        <argument android:name="product_id" app:argType="string" android:defaultValue="c248e83f-2af8-4957-8a91-5e72a0f3acef"/>
+        <argument
+            android:name="product_id"
+            android:defaultValue="c248e83f-2af8-4957-8a91-5e72a0f3acef"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_fragment_product_to_self"
+            app:destination="@id/fragment_product" />
 
     </fragment>
 

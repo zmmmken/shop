@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +17,7 @@ import com.kenevisi.domain.contract.ProductEntity
 import com.kenevisi.feature_core.viewModelHelper.ImageLoader
 import com.kenevisi.feature_core.viewModelHelper.collectOnEachStart
 import com.kenevisi.product.databinding.FragmentProductBinding
+import com.kenevisi.product.presentation.SimilarProductAction
 import com.kenevisi.product.similarProducts.SimilarProductAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -39,7 +42,18 @@ class ProductFragment : Fragment() {
     lateinit var imageLoader: ImageLoader
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        similarProductAdapter = SimilarProductAdapter(imageLoader)
+        similarProductAdapter = SimilarProductAdapter(
+            imageLoader = imageLoader,
+            action = object : SimilarProductAction {
+                override fun onClick(product: ProductEntity) {
+                    findNavController().navigate(
+                        ProductFragmentDirections.actionFragmentProductToSelf(
+                            product.getProductKey()
+                        )
+                    )
+                }
+            }
+        )
         productAdapter = ProductInfoAdapter(imageLoader)
         super.onCreate(savedInstanceState)
     }
@@ -54,13 +68,15 @@ class ProductFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.toolbar.setupWithNavController(findNavController())
         initLayoutManager()
         collectUiState()
     }
 
     private fun collectUiState() {
-        collectOnEachStart(viewModel.container.uiState.map { it.product }.distinctUntilChanged()) { productState ->
-            if(productState !is ResourceState.Success){
+        collectOnEachStart(viewModel.container.uiState.map { it.product }
+            .distinctUntilChanged()) { productState ->
+            if (productState !is ResourceState.Success) {
                 productAdapter?.submitList(listOf(ProductEntity.empty()))
             }
 
@@ -82,14 +98,14 @@ class ProductFragment : Fragment() {
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 // Define span size for each position
-                if(position < (productAdapter?.itemCount ?: 0)){
+                if (position < (productAdapter?.itemCount ?: 0)) {
                     return 2
                 }
                 return 1
             }
         }
         binding.rvSimilarPosts.layoutManager = gridLayoutManager
-        binding.rvSimilarPosts.adapter = ConcatAdapter(productAdapter,similarProductAdapter)
+        binding.rvSimilarPosts.adapter = ConcatAdapter(productAdapter, similarProductAdapter)
         binding.rvSimilarPosts.itemAnimator = null
     }
 
