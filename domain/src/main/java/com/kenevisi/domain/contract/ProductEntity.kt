@@ -10,4 +10,21 @@ data class ProductEntity(
     private val images: List<String>?
 ) {
     fun getProductKey() = productKey.orEmpty()
+
+    fun getPersianName() = persianName.orEmpty()
+    fun getLatinName() = latinName.orEmpty()
+
+    fun getImages() = images.orEmpty()
+
+    companion object {
+        fun empty() = ProductEntity(
+            persianName = null,
+            latinName = null,
+            posterImage = null,
+            productKey = null,
+            price = null,
+            priceText = null,
+            images = null
+        )
+    }
 }
