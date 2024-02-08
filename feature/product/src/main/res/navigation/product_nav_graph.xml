@@ -8,7 +8,7 @@
         android:id="@+id/fragment_product"
         android:name="com.kenevisi.product.ProductFragment" >
 
-        <argument android:name="product_id" app:argType="string" android:defaultValue=""/>
+        <argument android:name="product_id" app:argType="string" android:defaultValue="c248e83f-2af8-4957-8a91-5e72a0f3acef"/>
 
     </fragment>
 
