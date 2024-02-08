@@ -56,10 +56,11 @@ class ProductFragment : Fragment() {
     private fun collectUiState() {
         collectOnEachStart(viewModel.container.uiState.map { it.product }.distinctUntilChanged()) { productState ->
             if(productState !is ResourceState.Success){
-                productAdapter?.submitList(listOf(ProductEntity(null,null,null,null,null,null,null)))
+                productAdapter?.submitList(listOf(ProductEntity.empty()))
             }
 
             productState.onSuccess {
+                binding.toolbar.title = it.getPersianName()
                 productAdapter?.submitList(listOf(it))
             }
 
@@ -76,7 +77,7 @@ class ProductFragment : Fragment() {
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 // Define span size for each position
-                if(position < 1){
+                if(position < (productAdapter?.itemCount ?: 0)){
                     return 2
                 }
                 return 1

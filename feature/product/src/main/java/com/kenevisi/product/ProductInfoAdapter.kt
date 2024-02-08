@@ -36,6 +36,16 @@ class ProductInfoAdapter : ListAdapter<ProductEntity, ProductViewHolder>(diffUti
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+        holder.bind(getItem(position))
+    }
 
+    override fun onViewAttachedToWindow(holder: ProductViewHolder) {
+        super.onViewAttachedToWindow(holder)
+        holder.addAdapterToImageList()
+    }
+
+    override fun onViewDetachedFromWindow(holder: ProductViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        holder.removeAdapterFromImageList()
     }
 }
