@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
     android:background="@drawable/bg_similar_products"
-    android:layout_margin="8dp">
+    android:foreground="?attr/selectableItemBackgroundBorderless">
 
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -22,7 +23,22 @@
         android:maxLines="2"
         app:layout_constraintTop_toBottomOf="@id/img_poster" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/txt_title" />
 
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_seller_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/txt_price" />
 
 
 

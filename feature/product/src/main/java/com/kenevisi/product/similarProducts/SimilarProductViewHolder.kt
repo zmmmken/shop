@@ -15,6 +15,8 @@ class SimilarProductViewHolder(
     fun bind(product: ProductEntity){
         product.getPosterImager()?.let { imageLoader.loadImage(binding.imgPoster, it) }
         binding.txtTitle.text = product.getPersianName()
+        binding.txtPrice.text = product.getPriceText()
+        binding.txtSellerCount.text = product.getShopText()
         binding.root.setOnClickListener {
             action.onClick(product)
         }

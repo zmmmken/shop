@@ -13,8 +13,8 @@ class ProductViewHolder(
 
     private var imageAdapter: ImageAdapter = ImageAdapter(imageLoader)
     fun bind(productEntity: ProductEntity) {
-        binding.txtLatinNameName.text = productEntity.getPersianName()
-        binding.txtPersianName.text = productEntity.getLatinName()
+        binding.txtLatinNameName.text = productEntity.getLatinName()
+        binding.txtPersianName.text = productEntity.getPersianName()
         initImageList()
         setImages(productEntity.getImages())
     }

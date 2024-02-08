@@ -11,6 +11,7 @@ fun ProductResponse.toProductEntity(): ProductEntity {
         price = price,
         priceText = priceText,
         productKey = productKey,
-        images = images?.firstOrNull()?.urls
+        images = images?.firstOrNull()?.urls,
+        shopText = shopText
     )
 }
