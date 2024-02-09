@@ -1,30 +1,29 @@
 package com.kenevisi.product
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.paging.LoadStateAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.kenevisi.core.exceptions.ResourceState
+import androidx.recyclerview.widget.RecyclerView
 import com.kenevisi.domain.contract.ProductEntity
 import com.kenevisi.feature_core.viewModelHelper.ImageLoader
 import com.kenevisi.feature_core.viewModelHelper.collectOnEachStart
 import com.kenevisi.product.databinding.FragmentProductBinding
+import com.kenevisi.product.presentation.ProductAction
 import com.kenevisi.product.presentation.SimilarProductAction
 import com.kenevisi.product.similarProducts.SimilarProductAdapter
+import com.kenevisi.product.similarProducts.SimilarProductLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -37,6 +36,9 @@ class ProductFragment : Fragment() {
     val viewModel: ProductViewModel by viewModels()
     private var similarProductAdapter: SimilarProductAdapter? = null
     private var productAdapter: ProductInfoAdapter? = null
+    private var footerLoadStateAdapter: SimilarProductLoadStateAdapter? = null
+    private var footerLoadStateAdapterForRefresh: SimilarProductLoadStateAdapter? = null
+
 
     @Inject
     lateinit var imageLoader: ImageLoader
@@ -48,13 +50,24 @@ class ProductFragment : Fragment() {
                 override fun onClick(product: ProductEntity) {
                     findNavController().navigate(
                         ProductFragmentDirections.actionFragmentProductToSelf(
-                            product.getProductKey()
+                            productId = product.getProductKey(),
+                            latinName = product.getLatinName(),
+                            perianName = product.getPersianName(),
+                            posterUrl = product.getPosterImager()
                         )
                     )
                 }
             }
         )
-        productAdapter = ProductInfoAdapter(imageLoader)
+        productAdapter = ProductInfoAdapter(imageLoader){
+            viewModel.handleAction(ProductAction.GetProduct)
+        }
+        footerLoadStateAdapter = SimilarProductLoadStateAdapter {
+            similarProductAdapter?.retry()
+        }
+        footerLoadStateAdapterForRefresh = SimilarProductLoadStateAdapter {
+            similarProductAdapter?.retry()
+        }
         super.onCreate(savedInstanceState)
     }
 
@@ -76,14 +89,9 @@ class ProductFragment : Fragment() {
     private fun collectUiState() {
         collectOnEachStart(viewModel.container.uiState.map { it.product }
             .distinctUntilChanged()) { productState ->
-            if (productState !is ResourceState.Success) {
-                productAdapter?.submitList(listOf(ProductEntity.empty()))
-            }
+            binding.toolbar.title = productState.data?.getPersianName()
 
-            productState.onSuccess {
-                binding.toolbar.title = it.getPersianName()
-                productAdapter?.submitList(listOf(it))
-            }
+            productAdapter?.submitList(listOf(productState))
 
         }
         collectOnEachStart(viewModel.container.uiState.map { it.similarProducts }
@@ -98,14 +106,25 @@ class ProductFragment : Fragment() {
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 // Define span size for each position
-                if (position < (productAdapter?.itemCount ?: 0)) {
-                    return 2
+                return if (position < (productAdapter?.itemCount ?: 0)) {
+                    2
+                } else {
+                    val isLoadStateAdapter =
+                        binding.rvSimilarPosts.adapter?.itemCount?.minus(1) == position
+                    if (isLoadStateAdapter) {
+                        2
+                    } else 1
                 }
-                return 1
+
             }
         }
         binding.rvSimilarPosts.layoutManager = gridLayoutManager
-        binding.rvSimilarPosts.adapter = ConcatAdapter(productAdapter, similarProductAdapter)
+        binding.rvSimilarPosts.adapter = ConcatAdapter(productAdapter,
+            similarProductAdapter?.withAppendAndRefreshLoadState(
+                footer = footerLoadStateAdapter,
+                refresh = footerLoadStateAdapterForRefresh
+            )
+        )
         binding.rvSimilarPosts.itemAnimator = null
     }
 
@@ -120,4 +139,15 @@ class ProductFragment : Fragment() {
         similarProductAdapter = null
     }
 
+}
+
+fun <T : Any, VH : RecyclerView.ViewHolder> PagingDataAdapter<T, VH>.withAppendAndRefreshLoadState(
+    footer: LoadStateAdapter<*>?,
+    refresh: LoadStateAdapter<*>?
+): ConcatAdapter {
+    addLoadStateListener { loadStates ->
+        footer?.loadState = loadStates.append
+        refresh?.loadState = loadStates.refresh
+    }
+    return ConcatAdapter(refresh, this, footer)
 }

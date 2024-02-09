@@ -13,6 +13,22 @@
             android:defaultValue="c248e83f-2af8-4957-8a91-5e72a0f3acef"
             app:argType="string" />
 
+        <argument
+            android:name="perian_name"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="latin_name"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="poster_url"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+
         <action
             android:id="@+id/action_fragment_product_to_self"
             app:destination="@id/fragment_product" />
