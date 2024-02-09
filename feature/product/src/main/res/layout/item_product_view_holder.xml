@@ -16,20 +16,22 @@
 
     <TextView
         android:id="@+id/txt_persian_name"
+        style="@style/TextStyle.firstHeadline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        style="@style/TextStyle.firstHeadline"
         android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/romance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rv_images_list" />
 
     <TextView
         android:id="@+id/txt_latinName_name"
+        style="@style/TextStyle.secondHeadline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/TextStyle.secondHeadline"
         android:layout_marginHorizontal="24dp"
+        android:textColor="@color/brownish_grey"
         app:layout_constraintTop_toBottomOf="@id/txt_persian_name" />
 
     <com.google.android.material.divider.MaterialDivider
@@ -44,20 +46,22 @@
         android:id="@+id/img_bell"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        app:srcCompat="@drawable/ic_bell"
         android:layout_marginStart="24dp"
+        android:tint="@color/lemon_grass"
         app:layout_constraintBottom_toTopOf="@id/divider_bottom_actions"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider_top_actions" />
+        app:layout_constraintTop_toBottomOf="@id/divider_top_actions"
+        app:srcCompat="@drawable/ic_bell" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        style="@style/TextStyle.caption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textAlignment="viewStart"
-        android:textDirection="locale"
-        style="@style/TextStyle.caption"
-        android:text="@string/price_change_notifier"
         android:layout_marginStart="8dp"
+        android:text="@string/price_change_notifier"
+        android:textAlignment="viewStart"
+        android:textColor="@color/lemon_grass"
+        android:textDirection="locale"
         app:layout_constraintBottom_toBottomOf="@id/img_bell"
         app:layout_constraintEnd_toStartOf="@id/img_heart"
         app:layout_constraintStart_toEndOf="@id/img_bell"
@@ -68,10 +72,11 @@
         android:id="@+id/img_share"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:layout_marginEnd="24dp"
+        android:tint="@color/lemon_grass"
         app:layout_constraintBottom_toBottomOf="@id/img_bell"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/img_bell"
-        android:layout_marginEnd="24dp"
         app:srcCompat="@drawable/ic_share" />
 
 
@@ -80,6 +85,7 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginEnd="24dp"
+        android:tint="@color/lemon_grass"
         app:layout_constraintBottom_toBottomOf="@id/img_bell"
         app:layout_constraintEnd_toStartOf="@id/img_share"
         app:layout_constraintTop_toTopOf="@id/img_bell"
