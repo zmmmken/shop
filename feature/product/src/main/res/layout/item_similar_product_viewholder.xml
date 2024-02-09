@@ -17,30 +17,61 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_title"
+        style="@style/TextStyle.firstSubtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:lines="2"
         android:maxLines="2"
+        android:textColor="@color/romance"
         app:layout_constraintTop_toBottomOf="@id/img_poster" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_price"
+        style="@style/TextStyle.firstSubtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/jasper"
         app:layout_constraintTop_toBottomOf="@id/txt_title" />
 
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_seller_count"
+        style="@style/TextStyle.secondSubtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:layout_marginTop="4dp"
+        android:textAlignment="center"
+        android:textColor="@color/brownish_grey"
         app:layout_constraintTop_toBottomOf="@id/txt_price" />
 
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_bell"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@drawable/ic_bell"
+        android:tint="@color/lemon_grass"
+        app:layout_constraintEnd_toStartOf="@id/img_heart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_seller_count" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_heart"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="16dp"
+        app:srcCompat="@drawable/ic_heart"
+        android:tint="@color/lemon_grass"
+        android:layout_marginVertical="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/img_bell"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/img_bell"
+        app:layout_constraintTop_toTopOf="@id/img_bell" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
