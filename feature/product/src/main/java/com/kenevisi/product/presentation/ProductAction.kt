@@ -1,4 +1,5 @@
 package com.kenevisi.product.presentation
 
-sealed class ProductAction {
+sealed interface ProductAction {
+    data object GetProduct: ProductAction
 }

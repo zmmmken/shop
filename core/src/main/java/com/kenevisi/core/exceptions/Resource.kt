@@ -1,10 +1,10 @@
 package com.kenevisi.core.exceptions
 
-sealed class ResourceState<out T> {
-    data class Success<T>(val data: T) : ResourceState<T>()
-    data class Failure(val exception: Exception) : ResourceState<Nothing>()
-    data object Loading : ResourceState<Nothing>()
-    data object None : ResourceState<Nothing>()
+sealed class ResourceState<T>(open val data: T?) {
+    data class Success<T>(override val data: T) : ResourceState<T>(data)
+    data class Failure<T>(val exception: Exception,val oldData:T? = null) : ResourceState<T>(oldData)
+    data class Loading<T>(val oldData:T? = null) : ResourceState<T>(oldData)
+    data class None<T>(val oldData:T? = null) : ResourceState<T>(oldData)
 
     fun getResult(): T? {
         return (this as? Success)?.data

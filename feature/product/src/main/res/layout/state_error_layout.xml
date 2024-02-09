@@ -2,8 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingVertical="16dp">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/txt_retry"
@@ -24,20 +23,5 @@
         app:layout_constraintStart_toEndOf="@id/txt_retry"
         app:layout_constraintTop_toTopOf="@id/txt_retry"
         app:srcCompat="@drawable/ic_refresh" />
-
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/pi_loading"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        app:indicatorColor="?attr/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:indeterminate="true"
-        app:trackColor="?attr/dividerColor"
-        app:trackCornerRadius="8dp"
-        app:trackThickness="4dp" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

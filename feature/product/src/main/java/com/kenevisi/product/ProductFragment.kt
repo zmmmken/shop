@@ -8,12 +8,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.paging.LoadStateAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.kenevisi.domain.contract.ProductEntity
 import com.kenevisi.feature_core.viewModelHelper.ImageLoader
 import com.kenevisi.feature_core.viewModelHelper.collectOnEachStart
 import com.kenevisi.product.databinding.FragmentProductBinding
+import com.kenevisi.product.presentation.ProductAction
 import com.kenevisi.product.presentation.SimilarProductAction
 import com.kenevisi.product.similarProducts.SimilarProductAdapter
 import com.kenevisi.product.similarProducts.SimilarProductLoadStateAdapter
@@ -33,6 +37,7 @@ class ProductFragment : Fragment() {
     private var similarProductAdapter: SimilarProductAdapter? = null
     private var productAdapter: ProductInfoAdapter? = null
     private var footerLoadStateAdapter: SimilarProductLoadStateAdapter? = null
+    private var footerLoadStateAdapterForRefresh: SimilarProductLoadStateAdapter? = null
 
 
     @Inject
@@ -54,8 +59,13 @@ class ProductFragment : Fragment() {
                 }
             }
         )
-        productAdapter = ProductInfoAdapter(imageLoader)
+        productAdapter = ProductInfoAdapter(imageLoader){
+            viewModel.handleAction(ProductAction.GetProduct)
+        }
         footerLoadStateAdapter = SimilarProductLoadStateAdapter {
+            similarProductAdapter?.retry()
+        }
+        footerLoadStateAdapterForRefresh = SimilarProductLoadStateAdapter {
             similarProductAdapter?.retry()
         }
         super.onCreate(savedInstanceState)
@@ -79,10 +89,9 @@ class ProductFragment : Fragment() {
     private fun collectUiState() {
         collectOnEachStart(viewModel.container.uiState.map { it.product }
             .distinctUntilChanged()) { productState ->
-            productState.onSuccess {
-                binding.toolbar.title = it.getPersianName()
-                productAdapter?.submitList(listOf(it))
-            }
+            binding.toolbar.title = productState.data?.getPersianName()
+
+            productAdapter?.submitList(listOf(productState))
 
         }
         collectOnEachStart(viewModel.container.uiState.map { it.similarProducts }
@@ -111,7 +120,11 @@ class ProductFragment : Fragment() {
         }
         binding.rvSimilarPosts.layoutManager = gridLayoutManager
         binding.rvSimilarPosts.adapter = ConcatAdapter(productAdapter,
-            footerLoadStateAdapter?.let { similarProductAdapter?.withLoadStateFooter(it) })
+            similarProductAdapter?.withAppendAndRefreshLoadState(
+                footer = footerLoadStateAdapter,
+                refresh = footerLoadStateAdapterForRefresh
+            )
+        )
         binding.rvSimilarPosts.itemAnimator = null
     }
 
@@ -126,4 +139,15 @@ class ProductFragment : Fragment() {
         similarProductAdapter = null
     }
 
+}
+
+fun <T : Any, VH : RecyclerView.ViewHolder> PagingDataAdapter<T, VH>.withAppendAndRefreshLoadState(
+    footer: LoadStateAdapter<*>?,
+    refresh: LoadStateAdapter<*>?
+): ConcatAdapter {
+    addLoadStateListener { loadStates ->
+        footer?.loadState = loadStates.append
+        refresh?.loadState = loadStates.refresh
+    }
+    return ConcatAdapter(refresh, this, footer)
 }
