@@ -16,7 +16,7 @@ class ProductInfoAdapter(
     companion object {
         private val diffUtil = object : DiffUtil.ItemCallback<ProductEntity>() {
             override fun areItemsTheSame(oldItem: ProductEntity, newItem: ProductEntity): Boolean {
-                return oldItem == newItem
+                return oldItem.getProductKey() == newItem.getProductKey()
             }
 
             override fun areContentsTheSame(

@@ -1,10 +1,11 @@
 package com.kenevisi.product
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
+import com.kenevisi.core.exceptions.ResourceState
+import com.kenevisi.domain.contract.ProductEntity
 import com.kenevisi.domain.usecases.GetProductUseCase
 import com.kenevisi.domain.usecases.GetSimilarProductsUseCase
 import com.kenevisi.feature_core.viewModelHelper.ViewModelContainer
@@ -27,7 +28,15 @@ class ProductViewModel @Inject constructor(
 
     override val container = ViewModelContainer<ProductUiState, ProductSideEffect>(
         scope = viewModelScope,
-        initState = ProductUiState()
+        initState = ProductUiState(
+            product = ResourceState.Success(
+                data = ProductEntity.empty().copy(
+                    persianName = args.perianName,
+                    latinName = args.latinName,
+                    posterImage = args.posterUrl
+                )
+            )
+        )
     )
 
     init {

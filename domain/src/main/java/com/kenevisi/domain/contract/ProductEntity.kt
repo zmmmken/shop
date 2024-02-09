@@ -13,7 +13,10 @@ data class ProductEntity(
     fun getProductKey() = productKey.orEmpty()
     fun getPersianName() = persianName.orEmpty()
     fun getLatinName() = latinName.orEmpty()
-    fun getImages() = images.orEmpty()
+    fun getImages() = buildList {
+        getPosterImager()?.let { add(it) }
+        images?.let { addAll(it) }
+    }
     fun getPosterImager() = posterImage
     fun getPriceText() = priceText.orEmpty()
     fun getShopText() = shopText.orEmpty()

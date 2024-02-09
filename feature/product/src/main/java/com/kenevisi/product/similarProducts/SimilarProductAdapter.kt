@@ -16,7 +16,6 @@ class SimilarProductAdapter(
 ) : PagingDataAdapter<ProductEntity, SimilarProductViewHolder>(diffUtil) {
 
     override fun onBindViewHolder(holder: SimilarProductViewHolder, position: Int) {
-        Log.d("TAG1234", "onBindViewHolder: ${getItem(position)?.getProductKey()}")
         getItem(position)?.let { holder.bind(it) }
     }
 
