@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.kenevisi.feature_core.customViews.TorobConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,14 +8,14 @@
     android:foreground="?attr/selectableItemBackgroundBorderless">
 
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.kenevisi.feature_core.customViews.TorobImageView
         android:id="@+id/img_poster"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintDimensionRatio="1:0.8"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.kenevisi.feature_core.customViews.TorobTextView
         android:id="@+id/txt_title"
         style="@style/TextStyle.firstSubtitle"
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
         android:textColor="@color/romance"
         app:layout_constraintTop_toBottomOf="@id/img_poster" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.kenevisi.feature_core.customViews.TorobTextView
         android:id="@+id/txt_price"
         style="@style/TextStyle.firstSubtitle"
         android:layout_width="match_parent"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@id/txt_title" />
 
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.kenevisi.feature_core.customViews.TorobTextView
         android:id="@+id/txt_seller_count"
         style="@style/TextStyle.secondSubtitle"
         android:layout_width="match_parent"
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@id/txt_price" />
 
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.kenevisi.feature_core.customViews.TorobImageView
         android:id="@+id/img_bell"
         android:layout_width="24dp"
         android:layout_height="24dp"
@@ -61,7 +61,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_seller_count" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.kenevisi.feature_core.customViews.TorobImageView
         android:id="@+id/img_heart"
         android:layout_width="24dp"
         android:layout_height="24dp"
@@ -75,4 +75,4 @@
         app:layout_constraintTop_toTopOf="@id/img_bell" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</com.kenevisi.feature_core.customViews.TorobConstraintLayout>

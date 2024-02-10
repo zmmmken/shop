@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.kenevisi.feature_core.customViews.TorobConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingVertical="16dp">
 
-    <TextView
+    <com.kenevisi.feature_core.customViews.TorobTextView
         android:id="@+id/txt_retry"
         style="@style/TextStyle.caption"
         android:layout_width="wrap_content"
@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.kenevisi.feature_core.customViews.TorobImageView
         android:id="@+id/img_retry"
         android:layout_width="24dp"
         android:layout_height="24dp"
@@ -40,4 +40,4 @@
         app:trackThickness="4dp" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</com.kenevisi.feature_core.customViews.TorobConstraintLayout>
