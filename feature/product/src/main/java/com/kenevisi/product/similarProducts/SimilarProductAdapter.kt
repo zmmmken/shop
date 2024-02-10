@@ -1,12 +1,11 @@
 package com.kenevisi.product.similarProducts
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.kenevisi.domain.contract.ProductEntity
-import com.kenevisi.feature_core.viewModelHelper.ImageLoader
+import com.kenevisi.feature_core.ImageLoader
 import com.kenevisi.product.databinding.ItemSimilarProductViewholderBinding
 import com.kenevisi.product.presentation.SimilarProductAction
 

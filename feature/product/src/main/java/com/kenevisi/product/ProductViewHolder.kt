@@ -5,10 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kenevisi.core.exceptions.ResourceState
 import com.kenevisi.domain.contract.ProductEntity
-import com.kenevisi.feature_core.viewModelHelper.ImageLoader
-import com.kenevisi.feature_core.viewModelHelper.gone
-import com.kenevisi.feature_core.viewModelHelper.invisible
-import com.kenevisi.feature_core.viewModelHelper.show
+import com.kenevisi.feature_core.ImageLoader
+import com.kenevisi.feature_core.extensions.gone
+import com.kenevisi.feature_core.extensions.invisible
+import com.kenevisi.feature_core.extensions.show
 import com.kenevisi.product.databinding.ItemProductViewHolderBinding
 
 class ProductViewHolder(

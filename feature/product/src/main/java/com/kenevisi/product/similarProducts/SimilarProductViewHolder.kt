@@ -2,7 +2,7 @@ package com.kenevisi.product.similarProducts
 
 import androidx.recyclerview.widget.RecyclerView
 import com.kenevisi.domain.contract.ProductEntity
-import com.kenevisi.feature_core.viewModelHelper.ImageLoader
+import com.kenevisi.feature_core.ImageLoader
 import com.kenevisi.product.databinding.ItemSimilarProductViewholderBinding
 import com.kenevisi.product.presentation.SimilarProductAction
 

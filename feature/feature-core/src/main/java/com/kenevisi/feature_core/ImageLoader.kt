@@ -1,4 +1,4 @@
-package com.kenevisi.feature_core.viewModelHelper
+package com.kenevisi.feature_core
 
 import androidx.appcompat.widget.AppCompatImageView
 

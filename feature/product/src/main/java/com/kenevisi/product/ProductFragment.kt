@@ -7,15 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
 import androidx.paging.LoadStateAdapter
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kenevisi.domain.contract.ProductEntity
-import com.kenevisi.feature_core.viewModelHelper.ImageLoader
-import com.kenevisi.feature_core.viewModelHelper.collectOnEachStart
+import com.kenevisi.feature_core.ImageLoader
+import com.kenevisi.feature_core.extensions.collectOnEachStart
+import com.kenevisi.feature_core.extensions.getScreenWidthInDp
 import com.kenevisi.product.databinding.FragmentProductBinding
 import com.kenevisi.product.presentation.ProductAction
 import com.kenevisi.product.presentation.SimilarProductAction
@@ -59,7 +59,7 @@ class ProductFragment : Fragment() {
                 }
             }
         )
-        productAdapter = ProductInfoAdapter(imageLoader){
+        productAdapter = ProductInfoAdapter(imageLoader) {
             viewModel.handleAction(ProductAction.GetProduct)
         }
         footerLoadStateAdapter = SimilarProductLoadStateAdapter {
@@ -107,25 +107,27 @@ class ProductFragment : Fragment() {
     }
 
     private fun initLayoutManager() {
-        val gridLayoutManager = GridLayoutManager(requireContext(), 2)
+        val columnCount = calculateColumnCount()
+        val gridLayoutManager = GridLayoutManager(requireContext(), columnCount)
         gridLayoutManager.orientation = GridLayoutManager.VERTICAL // For horizontal orientation
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 // Define span size for each position
                 return if (position < (productAdapter?.itemCount ?: 0)) {
-                    2
+                    columnCount
                 } else {
                     val isLoadStateAdapter =
                         binding.rvSimilarPosts.adapter?.itemCount?.minus(1) == position
                     if (isLoadStateAdapter) {
-                        2
+                        columnCount
                     } else 1
                 }
 
             }
         }
         binding.rvSimilarPosts.layoutManager = gridLayoutManager
-        binding.rvSimilarPosts.adapter = ConcatAdapter(productAdapter,
+        binding.rvSimilarPosts.adapter = ConcatAdapter(
+            productAdapter,
             similarProductAdapter?.withAppendAndRefreshLoadState(
                 footer = footerLoadStateAdapter,
                 refresh = footerLoadStateAdapterForRefresh
@@ -133,6 +135,15 @@ class ProductFragment : Fragment() {
         )
         binding.rvSimilarPosts.itemAnimator = null
     }
+
+    private fun calculateColumnCount():Int {
+        return try {
+            requireContext().getScreenWidthInDp() / IDEAL_WIDTH_SIMILAR_ITEM
+        } catch (_: Exception) {
+            DEFAULT_COLUMN_COUNT
+        }
+    }
+
 
     override fun onDestroyView() {
         binding.rvSimilarPosts.adapter = null
@@ -143,6 +154,11 @@ class ProductFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         similarProductAdapter = null
+    }
+
+    companion object {
+        private const val IDEAL_WIDTH_SIMILAR_ITEM = 160
+        private const val DEFAULT_COLUMN_COUNT = 2
     }
 
 }
