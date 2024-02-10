@@ -30,11 +30,14 @@ dependencies {
 
     //paging
     implementation(libs.paging)
+    testImplementation(libs.paging.test)
 
 
     //project layers
     implementation(projects.core)
     implementation(projects.domain)
     implementation(projects.feature.featureCore)
+
+    testImplementation(projects.testing)
 
 }
