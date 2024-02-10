@@ -1,4 +1,4 @@
-package com.kenevisi.product
+package com.kenevisi.product.similarProducts
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

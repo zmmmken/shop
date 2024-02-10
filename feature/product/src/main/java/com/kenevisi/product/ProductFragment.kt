@@ -19,6 +19,7 @@ import com.kenevisi.feature_core.extensions.getScreenWidthInDp
 import com.kenevisi.product.databinding.FragmentProductBinding
 import com.kenevisi.product.presentation.ProductAction
 import com.kenevisi.product.presentation.SimilarProductAction
+import com.kenevisi.product.similarProducts.ProductInfoAdapter
 import com.kenevisi.product.similarProducts.SimilarProductAdapter
 import com.kenevisi.product.similarProducts.SimilarProductLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint

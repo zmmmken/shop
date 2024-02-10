@@ -1,4 +1,4 @@
-package com.kenevisi.product
+package com.kenevisi.product.similarProducts
 
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,6 +10,7 @@ import com.kenevisi.feature_core.extensions.gone
 import com.kenevisi.feature_core.extensions.invisible
 import com.kenevisi.feature_core.extensions.show
 import com.kenevisi.product.databinding.ItemProductViewHolderBinding
+import com.kenevisi.product.imageList.ImageAdapter
 
 class ProductViewHolder(
     private val binding: ItemProductViewHolderBinding,

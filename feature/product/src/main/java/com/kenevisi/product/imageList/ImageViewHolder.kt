@@ -1,4 +1,4 @@
-package com.kenevisi.product
+package com.kenevisi.product.imageList
 
 import androidx.recyclerview.widget.RecyclerView
 import com.kenevisi.feature_core.ImageLoader
