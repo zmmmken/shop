@@ -34,7 +34,8 @@ class ProductViewModel @Inject constructor(
                 oldData = ProductEntity.empty().copy(
                     persianName = args.perianName,
                     latinName = args.latinName,
-                    posterImage = args.posterUrl
+                    posterImage = args.posterUrl,
+                    productKey = args.productId
                 )
             )
         )
