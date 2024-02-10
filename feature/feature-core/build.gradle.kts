@@ -21,4 +21,8 @@ dependencies {
     implementation(libs.fragment)
     implementation(libs.glide.core)
     annotationProcessor(libs.glide.compiler)
+
+    //Navigation
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
 }

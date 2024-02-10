@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kenevisi.domain.contract.ProductEntity
 import com.kenevisi.feature_core.ImageLoader
+import com.kenevisi.feature_core.extensions.canNavigateUp
 import com.kenevisi.feature_core.extensions.collectOnEachStart
 import com.kenevisi.feature_core.extensions.getScreenWidthInDp
 import com.kenevisi.product.databinding.FragmentProductBinding
@@ -34,7 +36,7 @@ class ProductFragment : Fragment() {
     private val binding
         get() = _binding!!
 
-    val viewModel: ProductViewModel by viewModels()
+    private val viewModel: ProductViewModel by viewModels()
     private var similarProductAdapter: SimilarProductAdapter? = null
     private var productAdapter: ProductInfoAdapter? = null
     private var footerLoadStateAdapter: SimilarProductLoadStateAdapter? = null
@@ -84,13 +86,17 @@ class ProductFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initLayoutManager()
         collectUiState()
-        onNavigationIconClick()
+        initNavigationOnToolbar()
     }
 
-    private fun onNavigationIconClick() {
+    private fun initNavigationOnToolbar() {
         binding.toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
+        binding.toolbar.navigationIcon = if(findNavController().canNavigateUp()) {
+            getDrawable(requireContext(), com.kenevisi.feature_core.R.drawable.ic_arrow)
+        } else null
+
     }
 
     private fun collectUiState() {
@@ -137,7 +143,7 @@ class ProductFragment : Fragment() {
         binding.rvSimilarPosts.itemAnimator = null
     }
 
-    private fun calculateColumnCount():Int {
+    private fun calculateColumnCount(): Int {
         return try {
             requireContext().getScreenWidthInDp() / IDEAL_WIDTH_SIMILAR_ITEM
         } catch (_: Exception) {
@@ -155,6 +161,9 @@ class ProductFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         similarProductAdapter = null
+        footerLoadStateAdapter = null
+        footerLoadStateAdapterForRefresh = null
+        productAdapter = null
     }
 
     companion object {
