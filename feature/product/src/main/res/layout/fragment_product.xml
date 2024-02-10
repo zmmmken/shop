@@ -15,7 +15,7 @@
         app:titleCentered="true"
         android:background="#ffff"
         app:titleTextAppearance="@style/TextStyle.appBar"
-        app:titleMarginStart="32dp"
+        app:navigationIcon="@drawable/ic_arrow"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.divider.MaterialDivider
