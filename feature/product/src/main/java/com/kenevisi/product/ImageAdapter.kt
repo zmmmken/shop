@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.kenevisi.feature_core.viewModelHelper.ImageLoader
+import com.kenevisi.feature_core.ImageLoader
 import com.kenevisi.product.databinding.ImageViewHolderBinding
 
 class ImageAdapter(private val imageLoader: ImageLoader) :

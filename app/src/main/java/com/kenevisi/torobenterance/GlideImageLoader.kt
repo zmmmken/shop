@@ -2,7 +2,7 @@ package com.kenevisi.torobenterance
 
 import androidx.appcompat.widget.AppCompatImageView
 import com.bumptech.glide.Glide
-import com.kenevisi.feature_core.viewModelHelper.ImageLoader
+import com.kenevisi.feature_core.ImageLoader
 import javax.inject.Inject
 
 class GlideImageLoader @Inject constructor(): ImageLoader {

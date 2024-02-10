@@ -1,7 +1,7 @@
 package com.kenevisi.product
 
 import androidx.recyclerview.widget.RecyclerView
-import com.kenevisi.feature_core.viewModelHelper.ImageLoader
+import com.kenevisi.feature_core.ImageLoader
 import com.kenevisi.product.databinding.ImageViewHolderBinding
 
 class ImageViewHolder(

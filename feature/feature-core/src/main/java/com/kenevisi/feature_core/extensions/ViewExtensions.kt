@@ -1,4 +1,4 @@
-package com.kenevisi.feature_core.viewModelHelper
+package com.kenevisi.feature_core.extensions
 
 import android.view.View
 import androidx.core.view.isVisible

@@ -1,7 +1,7 @@
 package com.kenevisi.torobenterance.di
 
 import com.kenevisi.torobenterance.GlideImageLoader
-import com.kenevisi.feature_core.viewModelHelper.ImageLoader
+import com.kenevisi.feature_core.ImageLoader
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -11,5 +11,5 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 abstract class ImageLoaderModule {
     @Binds
-    abstract fun bindImageLoader(imageLoader: GlideImageLoader):ImageLoader
+    abstract fun bindImageLoader(imageLoader: GlideImageLoader): ImageLoader
 }
