@@ -1,4 +1,4 @@
-package com.kenevisi.product
+package com.kenevisi.testing
 
 import org.junit.Test
 

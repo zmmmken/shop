@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     `kotlin-dsl`
     id("java-gradle-plugin")
-    id("org.jetbrains.kotlin.jvm").version("1.6.21")
+    id("org.jetbrains.kotlin.jvm").version("1.9.22")
 }
 
 

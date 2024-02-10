@@ -12,6 +12,7 @@ buildscript {
     dependencies {
         classpath(libs.classPath.navigation.safeargs)
         classpath(libs.classPath.serializable)
+        classpath(libs.gradleAndroid)
     }
 }
 
