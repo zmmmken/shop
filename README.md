@@ -1,5 +1,5 @@
 
-# Torob Product Screen Implementation
+# Product Screen Implementation
 
 This project focuses on implementing the product screen for Torob, a popular store widely used by Iranians. The development incorporates various key technologies and practices to ensure a robust and efficient solution.
 
